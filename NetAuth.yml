@@ -1,0 +1,38 @@
+--- # Play 1
+- name: Initialise freeipa on AuthServer
+  hosts: auth_server
+  become: true
+  vars:
+    freeipa_server_admin_password: Passw0rd
+    freeipa_server_domain: ads-c3484641.lan
+    freeipa_server_ds_password: Passw0rd
+    freeipa_server_fqdn: ipa-master.ads-c3484641.lan
+    freeipa_server_ip: 172.20.0.2
+    freeipa_server_realm: ads-c3484641.lan
+    freeipa_server_install_options:
+      #- "--ip-address={{ ansible_all_ipv4_addresses | join(' --ip-address=') }}"
+      - "--mkhomedir"
+      - "--no-ssh"
+      - "-v"
+      - "--log-file=/opt/logs/FreeIPA-Server"
+  roles:
+    - timorunge.freeipa_server
+
+--- # Play 2
+- name: Initialise freeipa on Desktops
+  hosts: Desktops
+  become: true
+  vars:
+    freeipa_client_domain: ads-c3484641.lan
+    freeipa_client_server: ads-c3484641.lan
+    freeipa_client_realm: ads-c3484641.lan
+    freeipa_client_principal: admin
+    freeipa_client_password: Passw0rd
+    freeipa_client_fqdn: ipa-{{ inventory_hostname }}.ads-c3484641.lan
+    freeipa_client_install_options:
+      - "--force-join"
+      - "--mkhomedir"
+      - "-v"
+      - "--log-file=/opt/logs/FreeIPA-Clients{{ inventory_hostname }}"
+  roles:
+    - timorunge.freeipa_client

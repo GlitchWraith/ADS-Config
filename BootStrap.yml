@@ -1,0 +1,13 @@
+---
+- name: BootStrap Network Connetctios
+  become: true
+  hosts: all
+  roles:
+    - basic
+    - role: ruzickap.proxy_settings
+      proxy_settings_http_proxy: 'http://172.22.0.51:3128'
+      proxy_settings_ftp_proxy: 'http:/172.22.0.51:3128'
+      proxy_settings_https_proxy: 'http://172.22.0.51:3128'
+      proxy_settings_no_proxy: 'localhost'
+  tasks:
+    - name: Remove Test

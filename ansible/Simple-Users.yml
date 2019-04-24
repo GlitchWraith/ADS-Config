@@ -1,0 +1,36 @@
+---
+- name: Add Users to Desktop
+  hosts: Desktops
+  roles:
+  - Basic
+  tasks:
+  - name: user - Add User 1
+    user:
+        name: user1
+        password: "{{ '9AYY8981' | password_hash('sha512') }}"
+        groups: admin
+        append: yes
+  - name: user - Add User 2
+    user:
+        name: user2
+        password: "{{ 'RTCFE3Z0' | password_hash('sha512') }}"
+        groups: staff
+        append: yes
+  - name: user - Add User 3
+    user:
+        name: user3
+        password: "{{ '5Y9HD8GD' | password_hash('sha512') }}"
+        groups: staff
+        append: yes
+  - name: user - Add User 4
+    user:
+        name: user4
+        password: "{{ 'XTPPSQUN' | password_hash('sha512') }}"
+        groups: staff,developer
+        append: yes
+  - name: user - Add User 5
+    user:
+        name: user5
+        password: "{{ 'OGJL1CX7' | password_hash('sha512') }}"
+        groups: staff,developer
+        append: yes
