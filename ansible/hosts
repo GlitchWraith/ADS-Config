@@ -1,7 +1,19 @@
 [Desktops]
+10.192.91.2
+10.129.91.5
 
 [developer_desktop]
+10.192.91.2
 
 [staff_desktop]
+10.129.91.5
 
 [auth_server]
+10.129.91.6 
+
+[Server]
+10.129.91.3
+
+[Servers]
+10.129.91.6 
+10.129.91.3
