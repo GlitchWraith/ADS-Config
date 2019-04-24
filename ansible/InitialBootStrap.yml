@@ -3,7 +3,7 @@
   become: true
   hosts: all
   roles:
-    - basic
+    #- Basic
     - role: ruzickap.proxy_settings
       proxy_settings_http_proxy: 'http://172.22.0.51:3128'
       proxy_settings_ftp_proxy: 'http:/172.22.0.51:3128'
