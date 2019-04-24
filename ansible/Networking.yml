@@ -17,7 +17,3 @@
       register: Output
     - name: Display ips
       debug: var=Output.stdout_lines
-    - name: apt python 2
-      apt:
-        name: python
-        state: present

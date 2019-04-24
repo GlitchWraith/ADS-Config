@@ -7,7 +7,7 @@
     freeipa_server_domain: ads-c3484641.lan
     freeipa_server_ds_password: Passw0rd
     freeipa_server_fqdn: ipa-master.ads-c3484641.lan
-    freeipa_server_ip: 172.20.0.2
+    freeipa_server_ip: {{ auth_server }}
     freeipa_server_realm: ads-c3484641.lan
     freeipa_server_install_options:
       #- "--ip-address={{ ansible_all_ipv4_addresses | join(' --ip-address=') }}"
@@ -18,7 +18,7 @@
   roles:
     - timorunge.freeipa_server
 
---- # Play 2
+# Play 2
 - name: Initialise freeipa on Desktops
   hosts: Desktops
   become: true
