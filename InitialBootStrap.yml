@@ -8,6 +8,12 @@
       proxy_settings_http_proxy: 'http://172.22.0.51:3128'
       proxy_settings_ftp_proxy: 'http:/172.22.0.51:3128'
       proxy_settings_https_proxy: 'http://172.22.0.51:3128'
-      proxy_settings_no_proxy: 'localhost'
+      proxy_settings_no_proxy: 'localhost,10.192.91.2,10.129.91.5,10.129.91.6,10.129.91.3'
   tasks:
-    - name: Remove Test
+    - name: Shell DCHP internet
+      shell: sudo dhclient ens3
+    - name: Shell ip address Check
+      shell: ip a 
+      register: Output
+    - name: Display ips
+      debug: var=Output.stdout_lines
