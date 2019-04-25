@@ -1,10 +1,11 @@
 --- # Play 1
 - name: SSSD check
   hosts: all
+  become: true
   vars:
     sssd_config_type: none
     sssd_from_sources: true
-    sssd_version: 2.0.0
+    sssd_version: 1.15.0
   roles:
     - timorunge.sssd
 
