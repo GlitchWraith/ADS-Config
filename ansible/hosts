@@ -1,5 +1,6 @@
 [Desktops]
-10.192.91.2
+#10.192.91.2
+localhost
 10.129.91.5
 
 [developer_desktop]
