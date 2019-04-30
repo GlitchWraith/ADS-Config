@@ -25,3 +25,8 @@
       apt:
         name: python-pip
         state: present
+
+    - name: apt python-apparmor
+      apt: 
+        name: python-apparmor
+        state: present

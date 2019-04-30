@@ -3,9 +3,9 @@
   hosts: all
   become: true
   vars:
-    sssd_config_type: none
-    sssd_from_sources: true
-    sssd_version: 1.15.0
+    sssd_config_type: config
+    sssd_from_sources: false
+    #sssd_version: 1.16.3-3.1
   roles:
     - timorunge.sssd
 
@@ -30,6 +30,7 @@
       - "--mkhomedir"      
       - "-v"
       - "--log-file=/opt/logs/FreeIPA-Server"
+    timeout: 180
   roles:
     - timorunge.freeipa_server
 
@@ -52,6 +53,7 @@
       - "--mkhomedir"
       - "-v"
       - "--log-file=/opt/logs/FreeIPA-Clients"
+    timeout: 180
   roles:
     - timorunge.freeipa_client
 
