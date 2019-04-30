@@ -1,13 +1,13 @@
---- # Play 1
-- name: SSSD check
-  hosts: all
-  become: true
-  vars:
-    sssd_config_type: config
-    sssd_from_sources: true
-    sssd_version: 1.16.0
-  roles:
-    - timorunge.sssd
+#--- # Play 1
+#- name: SSSD check
+#  hosts: all
+#  become: true
+#  vars:
+#    sssd_config_type: config
+#    sssd_from_sources: true
+#    sssd_version: 1.16.0
+#  roles:
+#    - timorunge.sssd
 
 - name: Initialise freeipa on AuthServer
   hosts: auth_server
@@ -19,56 +19,55 @@
     freeipa_server_fqdn: ipa-master.ads-c3484641.lan
     freeipa_server_ip: 10.129.91.6
     freeipa_server_realm: ads-c3484641.lan
-#    freeipa_server_admin_password: tiaspbiqe2r
-#    freeipa_server_domain: ads-c3484641.lan
-#    freeipa_server_ds_password: tiaspbiqe2r
-#    freeipa_server_fqdn: ipa-master.ads-c3484641.lan
-#    freeipa_server_ip: 10.129.91.6 #{{ auth_server }}
-#    freeipa_server_realm: ads-c3484641.lan
     freeipa_server_install_options:
-      - "--ip-address=10.129.91.6"
-      - "--mkhomedir"      
-      - "-v"
-      - "--log-file=/opt/logs/FreeIPA-Server"
+      - " -p tiaspbiqe2r"
+      - " -a tiaspbiqe2r"
+      - " -r ADS-C3484641"
+      - " --setup-adtrust"
+
+#      - "--ip-address=10.129.91.6"
+#      - "--mkhomedir"      
+#      - "-v"
+#      - "--log-file=/opt/logs/FreeIPA-Server"
   roles:
     - timorunge.freeipa_server
 
 # Play 2
-- name: Initialise freeipa on Desktops
-  hosts: Desktops
-  become: true
-  vars:
-    freeipa_client_domain: ads-c3484641.lan
-    freeipa_client_server: ipa-master.ads-c3484641.lan
-    freeipa_client_realm: ads-c3484641.lan
-    freeipa_client_principal: admin
-    freeipa_client_password: tiaspbiqe2r
-    freeipa_client_fqdn: ipa-{{ items }}.ads-c3484641.lan
-    with_items:
-      - Desktop1
-      - Desktop2
-    freeipa_client_install_options:
-      - "--force-join"
-      - "--mkhomedir"
-      - "-v"
-      - "--log-file=/opt/logs/FreeIPA-Clients"
-  roles:
-    - timorunge.freeipa_client
+#- name: Initialise freeipa on Desktops
+#  hosts: Desktops
+#  become: true
+#  vars:
+#    freeipa_client_domain: ads-c3484641.lan
+#    freeipa_client_server: ipa-master.ads-c3484641.lan
+#    freeipa_client_realm: ads-c3484641.lan
+#    freeipa_client_principal: admin
+#    freeipa_client_password: tiaspbiqe2r
+#    freeipa_client_fqdn: ipa-{{ items }}.ads-c3484641.lan
+#    with_items:
+#      - Desktop1
+#      - Desktop2
+#    freeipa_client_install_options:
+#      - "--force-join"
+#      - "--mkhomedir"
+#      - "-v"
+#      - "--log-file=/opt/logs/FreeIPA-Clients"
+#  roles:
+#    - timorunge.freeipa_client
 
-- name: Initialise freeipa on Server
-  hosts: Server
-  become: true
-  vars:
-    freeipa_client_domain: ads-c3484641.lan
-    freeipa_client_server: ipa-master.ads-c3484641.lan
-    freeipa_client_realm: ads-c3484641.lan
-    freeipa_client_principal: admin
-    freeipa_client_password: tiaspbiqe2r
-    freeipa_client_fqdn: ipa-Server.ads-c3484641.lan   
-    freeipa_client_install_options:
-      - "--force-join"
-      - "--mkhomedir"
-      - "-v"
-      - "--log-file=/opt/logs/FreeIPA-Clients"
-  roles:
-- timorunge.freeipa_client
+#- name: Initialise freeipa on Server
+#  hosts: Server
+#  become: true
+#  vars:
+#    freeipa_client_domain: ads-c3484641.lan
+#    freeipa_client_server: ipa-master.ads-c3484641.lan
+#    freeipa_client_realm: ads-c3484641.lan
+#    freeipa_client_principal: admin
+#    freeipa_client_password: tiaspbiqe2r
+#    freeipa_client_fqdn: ipa-Server.ads-c3484641.lan   
+#    freeipa_client_install_options:
+#      - "--force-join"
+#      - "--mkhomedir"
+#      - "-v"
+#      - "--log-file=/opt/logs/FreeIPA-Clients"
+#  roles:
+#    - timorunge.freeipa_client

@@ -18,15 +18,25 @@
     - name: Display ips
       debug: var=Output.stdout_lines
     - name: apt python 2
+      when: ansible_facts['os_family']|lower == 'debian'
       apt:
         name: python
         state: present
     - name: apt python 2 pip
+      when: ansible_facts['os_family']|lower == 'debian'
       apt:
         name: python-pip
         state: present
 
-    - name: apt python-apparmor
-      apt: 
-        name: python-apparmor
+    - name: yum python 2
+      when: ansible_facts['os_family'] == "RedHat"
+      yum: 
+        name: python
         state: present
+    
+    - name: yum pip2
+      when: ansible_facts['os_family'] == "RedHat"
+      yum: 
+        name: python-pip
+        state: present
+  
