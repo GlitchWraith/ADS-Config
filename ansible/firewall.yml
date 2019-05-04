@@ -34,6 +34,15 @@
         port: 464/tcp
         permanent: yes
         state: enabled
+
+   - firewalld:
+        port: 53/tcp
+        permanent: yes
+        state: enabled
+   - firewalld:
+        port: 53/udp
+        permanent: yes
+        state: enabled
    - firewalld:
         port: 7369/tcp
         permanent: yes
@@ -45,3 +54,15 @@
         state: enabled
    - name: restart firewalld
      service: name=firewalld state=restarted
+
+- name: firewall others
+  hosts: ['server', 'desktop']
+  become: true
+  tasks:
+    - firewalld:
+        zone: trusted
+        interface: eth0
+        permanent: yes
+        state: enabled
+    - name:
+      service: name=firewalld state=restarted

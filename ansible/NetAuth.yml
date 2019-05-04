@@ -54,8 +54,8 @@
 #    freeipa_client_password: tiaspbiqe2r
 #    freeipa_client_fqdn: ipa-{{ items }}.ads-c3484641.lan
 #    with_items:
-#      - Desktop1
-#      - Desktop2
+#      - desktop1
+#      - desktop2
 #    freeipa_client_install_options:
 #      - "--force-join"
 #      - "--mkhomedir"

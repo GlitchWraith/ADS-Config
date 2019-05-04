@@ -1,4 +1,4 @@
-- name: Website Docker Container
+- name: FTP Docker Container
   hosts: server
   become: true
   roles:
@@ -7,29 +7,35 @@
   tasks:
     - name: file Make Directory
       file:
-        path: /opt/ADS-Website
+        path: /opt/ADS-Docker
         state: directory
         mode: 0775
-    - name: git Website Git Repo
+    - name: git Docker Git Repo
       git:
-        repo: "https://github.com/RealmOfTibbles/ADS-Website.git"
-        dest: /opt/ADS-Website/
+        repo: "https://github.com/RealmOfTibbles/ADS-Docker.git"
+        dest: /opt/ADS-Docker/
         clone: yes
         update: yes
         force: yes
     - name: shell build container
-      shell:  docker build -t website /opt/ADS-Website/
+      shell:  docker build -t ftp /opt/ADS-Docker/ftp/
       args:
-        chdir: /opt/ADS-Website/
+        chdir: /opt/ADS-Docker/ftp/
+    - name: docker_volume files
+      docker_volume:
+        name: DataStore_ftp
+        state: present
     - name: Run Container
       docker_container:
-        name: Website
-        image: "website"
+        name: ftp-Server
+        image: "ftp"
         state: started
         restart: yes
+        volumes:
+        - DataStore_ftp/Data
         ports:
-        - "80:80"
-        - "443:443"
+        - "21:21"
+        - "20:20"
         cpu_shares: 768
         memory: 1024m
         cap_drop:
