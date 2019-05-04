@@ -1,90 +1,92 @@
 ---
-- name: ipa_user user1
-  ipa_user:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: user1
-    password: 9AYY8981
-    state: present
-    telephonenumber:
-    - 2342
+- name: ipa Users
+  tasks:
+    - name: ipa_user user1
+      ipa_user:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: user1
+        password: 9AYY8981
+        state: present
+        telephonenumber:
+        - 2342
     
-- name: ipa_user user2
-  ipa_user:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: user2
-    password: RTCFE3Z0
-    state: present
-    telephonenumber:
-    - 2343
+    - name: ipa_user user2
+      ipa_user:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: user2
+        password: RTCFE3Z0
+        state: present
+        telephonenumber:
+        - 2343
 
-- name: ipa_user user3
-  ipa_user:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: user3
-    password: 5Y9HD8GD
-    state: present
-    telephonenumber:
-    - 2344
+    - name: ipa_user user3
+      ipa_user:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: user3
+        password: 5Y9HD8GD
+        state: present
+        telephonenumber:
+        - 2344
 
-- name: ipa_user user4
-  ipa_user:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: user4
-    password: XTPPSQUN
-    state: present
-    telephonenumber:
-    - 2345
+    - name: ipa_user user4
+      ipa_user:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: user4
+        password: XTPPSQUN
+        state: present
+        telephonenumber:
+        - 2345
 
-- name: ipa_user user5
-  ipa_user:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: user5
-    password: OGJL1CX7
-    state: present
-    telephonenumber:
-    - 2346
+    - name: ipa_user user5
+      ipa_user:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: user5
+        password: OGJL1CX7
+        state: present
+        telephonenumber:
+        - 2346
 
 
-- name: ipa_group admin
-  ipa_group:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: admin
-    state: present
-    user:
-    - user1
+    - name: ipa_group admin
+      ipa_group:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: admin
+        state: present
+        user:
+        - user1
 
-- name: ipa_group staff
-  ipa_group:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: staff
-    state: present
-    user:
-    - user2
-    - user3
-    - user4
-    - user5
+    - name: ipa_group staff
+      ipa_group:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: staff
+        state: present
+        user:
+        - user2
+        - user3
+        - user4
+        - user5
 
-- name: ipa_group developer
-  ipa_group:
-    ipa_user: admin
-    ipa_pass: tiaspbiqe2r
-    ipa_host: ipa-master.ads-c3484641.lan
-    name: developer
-    state: present
-    user:
-    - user4
-    - user5
+    - name: ipa_group developer
+      ipa_group:
+        ipa_user: admin
+        ipa_pass: tiaspbiqe2r
+        ipa_host: ipa-master.ads-c3484641.lan
+        name: developer
+        state: present
+        user:
+        - user4
+        - user5
