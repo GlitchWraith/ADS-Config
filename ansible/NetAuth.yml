@@ -15,13 +15,9 @@
     - name: yum the ipa
       when: ansible_facts['os_family'] == "RedHat"
       yum:
-        name: "{{item}}"
+        name:  ['ipa-server', 'ipa-server-common', 'ipa-server-dns', 'ipa-server-trust-ad']
         state: present
-        with_items:
-          - ipa-server 
-          - ipa-server-common
-          - ipa-server-dns
-          - ipa-server-trust-ad 
+      
 
 - name: Initialise freeipa on AuthServer
   hosts: auth_server
