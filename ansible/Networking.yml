@@ -11,7 +11,9 @@
       proxy_settings_no_proxy: 'localhost,10.192.91.2,10.129.91.5,10.129.91.6,10.129.91.3'
   tasks:
     - name: Shell DCHP internet
+      when: ansible_facts['os_family']|lower == 'debian'
       shell: sudo dhclient ens3
+
     - name: Shell ip address Check
       shell: ip a 
       register: Output
