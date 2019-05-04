@@ -15,7 +15,7 @@
     - name: yum the ipa
       when: ansible_facts['os_family'] == "RedHat"
       yum:
-        name:  ['ipa-server', 'ipa-server-common', 'ipa-server-dns', 'ipa-server-trust-ad']
+        name:  ['ipa-server', 'ipa-server-common', 'ipa-server-dns', 'ipa-server-trust-ad', python-pip]
         state: present
       
 

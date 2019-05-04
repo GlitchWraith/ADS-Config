@@ -1,0 +1,40 @@
+- name: Website Docker Container
+  hosts: server
+  become: true
+  roles:
+    - git
+    - docker
+  tasks:
+    - name: file Make Directory
+      file:
+        path: /opt/ADS-Website
+        state: directory
+        mode: 0775
+    - name: git Website Git Repo
+      git:
+        repo: "https://github.com/RealmOfTibbles/ADS-Website.git"
+        dest: /opt/ADS-Website/
+        clone: yes
+        update: yes
+        force: yes
+    - name: shell build container
+      shell:  docker build -t website /opt/ADS-Website/
+      args:
+        chdir: /opt/ADS-Website/
+    - name: Run Container
+      docker_container:
+        name: Website
+        image: "website"
+        state: started
+        restart: yes
+        ports:
+        - "80:80"
+        cpu_shares: 768
+        memory: 1024m
+        cap_drop:
+        - all
+    - name: Get Containers Details
+      shell: docker ps -l
+      register: Output
+    - name: Display Container Status's
+      debug: var=Output.stdout_lines
