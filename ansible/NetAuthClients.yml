@@ -1,3 +1,14 @@
+#--- # Play 1
+- name: SSSD check
+  hosts: staff_desktop
+  become: true
+  vars:
+    sssd_config_type: config
+    sssd_from_sources: false
+    sssd_version: 1.16.0
+  roles:
+    - timorunge.sssd
+- name: Pre
 # Play 2
 - name: Initialise freeipa on Desktops
   hosts: staff_desktop #Desktops

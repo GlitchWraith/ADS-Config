@@ -35,7 +35,7 @@
       - " -r ADS-C3484641"
       - " --setup-adtrust"
       - " --setup-dns"
-      - " --auto-reverse"
+
 
 #      - "--ip-address=10.129.91.6"
 #      - "--mkhomedir"      

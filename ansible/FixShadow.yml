@@ -1,7 +1,8 @@
-- name: Find RW  Issues
+- name: Fix RW  Issues
   hosts: ['developer_desktop' , 'staff_desktop']
+  become: true
   tasks:
-   - name: shell find RW
+   - name: file fix RW
      file:
         path: /etc/shadow
-        mode: 0640
+        mode: 0640 
