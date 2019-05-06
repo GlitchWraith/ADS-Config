@@ -1,0 +1,8 @@
+- name: Find RW  Issues
+  hosts: all
+  tasks:
+   - name: shell find RW
+     shell: ls -lh /etc/shadow /etc/group /etc/passwd
+     register: OutputRW
+   - name: Output 
+     debug: var=OutputRW.stdout_lines

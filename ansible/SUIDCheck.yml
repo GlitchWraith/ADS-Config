@@ -1,0 +1,8 @@
+- name: Find SUID Issues
+  hosts: all
+  tasks:
+   - name: shell find suid
+     shell: find / -user root -perm -4000 -exec ls -ldb {} \; 2> /dev/null
+     register: OutputSUID
+   - name: Output 
+     debug: var=OutputSUID.stdout_lines
