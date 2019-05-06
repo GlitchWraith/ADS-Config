@@ -4,5 +4,6 @@
    - name: shell find RW
      shell: ls -lh /etc/shadow /etc/group /etc/passwd
      register: OutputRW
+     ignore_errors: yes
    - name: Output 
      debug: var=OutputRW.stdout_lines
