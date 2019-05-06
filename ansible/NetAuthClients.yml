@@ -1,0 +1,40 @@
+# Play 2
+- name: Initialise freeipa on Desktops
+  hosts: staff_desktop #Desktops
+  become: true
+  vars:
+    freeipa_client_domain: ads-c3484641.lan
+    freeipa_client_server: ipa-master.ads-c3484641.lan
+    freeipa_client_realm: ads-c3484641.lan
+    freeipa_client_principal: admin
+    freeipa_client_password: tiaspbiqe2r
+    freeipa_client_fqdn: ipa-desktop1.ads-c3484641.lan
+#    freeipa_client_fqdn: ipa-{{ items }}.ads-c3484641.lan
+#    with_items:
+#      - desktop1
+#      - desktop2
+    freeipa_client_install_options:
+      - "--force-join"
+      - "--mkhomedir"
+      - "-v"
+#      - "--log-file=/opt/logs/FreeIPA-Clients"
+  roles:
+    - timorunge.freeipa_client
+
+#- name: Initialise freeipa on Server
+#  hosts: Server
+#  become: true
+#  vars:
+#    freeipa_client_domain: ads-c3484641.lan
+#    freeipa_client_server: ipa-master.ads-c3484641.lan
+#    freeipa_client_realm: ads-c3484641.lan
+#    freeipa_client_principal: admin
+#    freeipa_client_password: tiaspbiqe2r
+#    freeipa_client_fqdn: ipa-Server.ads-c3484641.lan   
+#    freeipa_client_install_options:
+#      - "--force-join"
+#      - "--mkhomedir"
+#      - "-v"
+#      - "--log-file=/opt/logs/FreeIPA-Clients"
+#  roles:
+#    - timorunge.freeipa_client
