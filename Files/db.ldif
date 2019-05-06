@@ -1,0 +1,15 @@
+
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcSuffix
+olcSuffix: dc=field,dc=ads-ldap-c3484641,dc=lan
+ 
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn=ldapadm,dc=field,dc=ads-ldap-c3484641,dc=lan
+ 
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: hashed_output_from_the_slappasswd_command

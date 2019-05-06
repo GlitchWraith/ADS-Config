@@ -1,7 +1,7 @@
 ---
 # https://github.com/mrlesmithjr/ansible-samba.git
 - name: provisions samba
-  hosts: all
+  hosts: test
   become: true
   vars:
     - pri_domain_name: "ADS.local"
