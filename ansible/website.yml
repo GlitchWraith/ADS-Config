@@ -1,5 +1,5 @@
 - name: Website Docker Container
-  hosts: server
+  hosts: Server
   become: true
   roles:
     - Git
