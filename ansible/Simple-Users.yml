@@ -4,6 +4,15 @@
   roles:
   - Basic
   tasks:
+  - group:
+      name: admin
+      state: present
+  - group:
+      name: staff
+      state: present
+  - group:
+      name: developer
+      state: present
   - name: user - Add User 1
     user:
         name: user1
