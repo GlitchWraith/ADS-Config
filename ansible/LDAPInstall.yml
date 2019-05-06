@@ -1,0 +1,14 @@
+---
+- name: LDAP
+  hosts: test
+  become: true
+  vars:
+    openldap_serverdomain_name: ads-c3484641.lan
+    openldap_serverrootpw: tiaspbiqe2r
+    openldap_serverenable_ssl: true
+    openldap_servercountry: UK                 # The self signed ssl certificate parameters
+    openldap_serverstate: West Yorkshire
+    openldap_serverlocation: Leeds
+    openldap_serverorganization: AET
+  roles:
+    - bennojoy.openldap_server
