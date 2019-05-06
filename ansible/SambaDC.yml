@@ -1,0 +1,73 @@
+---
+# https://github.com/mrlesmithjr/ansible-samba.git
+- name: provisions samba
+  hosts: all
+  become: true
+  vars:
+    - pri_domain_name: "ADS.local"
+    - samba_ad_info: 
+        ad_dc_hostname: "ipa-master.ADS.local"
+        ad_dns_domain_name: "ADS.local"
+        adminpass: P@tiaspbiqe2r
+        allow_dns_updates: disabled
+        backend_dns: internal
+        dns_forwarder: 8.8.8.8
+        kerberos_realm: 'ADS'
+        netbios_domain_name: "ADS"
+    - enable_dhcp_services: false
+    - samba_create_domain_controller: true
+    - samba_server_role: 'active directory domain controller'
+    - samba_create_domain_users: true
+    - samba_groups:
+        - admin
+        - staff
+        - developer
+    - samba_domain_users: 
+        - name: user1
+          password: 9AYY8981
+          smbpasswd: 9AYY8981
+          groups:
+            - admin
+            - staff
+        - name: user2
+          password: RTCFE3Z0
+          smbpasswd: RTCFE3Z0
+          group:
+            - staff
+        - name: user3
+          password: 5Y9HD8GD
+          smbpasswd: 5Y9HD8GD
+          group:
+            - staff
+            - developer
+        - name: user4
+          password: XTPPSQUN
+          smbpasswd: XTPPSQUN
+          group:
+            - staff
+            - developer
+        - name: user5
+          password: OGJL1CX7
+          smbpasswd: OGJL1CX7
+          group:
+            - staff
+            - developer
+    - samba_domain_controllers_group: samba_domain_controllers
+    - samba_security: user
+    - samba_share_path: /mnt/samba/shares
+    - samba_shares: 
+        - name: smb-share
+          browsable: "yes"
+          folder_perms: "0775"
+          group: staff
+          guest_ok: "no"
+          owner: nobody
+          writable: "yes"
+    - samba_workgroup: ADS
+  roles:
+    - role: ansible-isc-dhcp
+      when: >
+            enable_dhcp_services is defined and
+            enable_dhcp_services
+    - role: ansible-ntp
+    - role: ansible-samba
