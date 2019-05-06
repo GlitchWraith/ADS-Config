@@ -4,7 +4,7 @@
 #  become: true
 #  vars:
 #    sssd_config_type: config
-#    sssd_from_sources: true
+#    sssd_from_sources: false
 #    sssd_version: 1.16.0
 #  roles:
 #    - timorunge.sssd

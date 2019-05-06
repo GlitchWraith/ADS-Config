@@ -37,6 +37,7 @@
 - name: Python Docker module
   pip:
     name: docker
+    ignore_errors: yes
 
 - name: RedHat systemctl enable Docker
   when: ansible_facts['os_family']|lower == 'redhat'

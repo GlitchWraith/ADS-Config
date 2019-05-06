@@ -2,8 +2,8 @@
   hosts: server
   become: true
   roles:
-    - git
-    - docker
+    - Git
+    - Docker
   tasks:
     - name: file Make Directory
       file:

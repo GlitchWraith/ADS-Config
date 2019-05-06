@@ -8,7 +8,7 @@
     sssd_version: 1.16.0
   roles:
     - timorunge.sssd
-- name: Pre
+
 # Play 2
 - name: Initialise freeipa on Desktops
   hosts: staff_desktop #Desktops
@@ -27,6 +27,7 @@
     freeipa_client_install_options:
       - "--force-join"
       - "--mkhomedir"
+      - " --no-ntp"
       - "-v"
 #      - "--log-file=/opt/logs/FreeIPA-Clients"
   roles:
