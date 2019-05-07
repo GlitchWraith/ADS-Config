@@ -1,1 +1,9 @@
 # /srv/shared
+- name: dev Tools
+  host: developer_desktop
+  become: true
+  tasks:
+    - apt:
+        name: build-essentials
+        state: lastest
+        update_cache: yes

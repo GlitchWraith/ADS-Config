@@ -1,0 +1,29 @@
+- name: user perms
+  hosts: server
+  become: true
+  tasks:
+    - name: user permissions Directory
+      file:
+        path: /home/user1
+        state: directory
+        mode: 0700
+    - name: user permissions Directory
+      file:
+        path: /home/user2
+        state: directory
+        mode: 0700
+    - name: user permissions Directory
+      file:
+        path: /home/user3
+        state: directory
+        mode: 0700
+    - name: user permissions Directory
+      file:
+        path: /home/user4
+        state: directory
+        mode: 0700
+    - name: user permissions Directory
+      file:
+        path: /home/user5
+        state: directory
+        mode: 0700
